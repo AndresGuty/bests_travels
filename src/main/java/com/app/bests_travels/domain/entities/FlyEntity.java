@@ -8,7 +8,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Set;
 
 
 @AllArgsConstructor
@@ -16,7 +18,7 @@ import java.math.BigDecimal;
 @Data
 @Builder
 @Entity(name = "fly")
-public class FlyEntity {
+public class FlyEntity implements Serializable {
 
 
     @Id
@@ -46,6 +48,11 @@ public class FlyEntity {
     @Column(length = 20, name="aero_line")
     @Enumerated(EnumType.STRING)
     private AeroLine aeroLine;
+
+////////////////////MAPEO DE RELACIONES/////////////////////////////
+
+    @OneToMany(mappedBy = "fly", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    private Set<TicketEntity>tickets;
 
 
 }

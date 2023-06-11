@@ -7,7 +7,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Set;
 
 
 @AllArgsConstructor
@@ -15,7 +17,7 @@ import java.math.BigDecimal;
 @Data
 @Builder
 @Entity(name = "hotel")
-public class HotelEntity {
+public class HotelEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,4 +32,9 @@ public class HotelEntity {
     private Integer rating;
 
     private BigDecimal price;
+
+    ////////////////////////////////////MAPEANDO RELACIONES/////////////////////
+
+    @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    private Set<ReservationEntity> reservation;
 }
