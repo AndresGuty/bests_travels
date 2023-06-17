@@ -27,10 +27,10 @@ public class ReservationEntity implements Serializable {
     private LocalDateTime dateTimeReservation;
 
     @Column(name = "date_start")
-    private Date dateStart;
+    private LocalDateTime dateStart;
 
     @Column(name = "date_end")
-    private Date dateEnd;
+    private LocalDateTime dateEnd;
 
     @Column(name = "total_days")
     private Integer totalDays;

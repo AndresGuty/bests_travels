@@ -3,10 +3,7 @@ package com.app.bests_travels.domain.entities;
 
 import com.app.bests_travels.util.AeroLine;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -51,7 +48,9 @@ public class FlyEntity implements Serializable {
 
 ////////////////////MAPEO DE RELACIONES/////////////////////////////
 
-    @OneToMany(mappedBy = "fly", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    @OneToMany(mappedBy = "fly", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<TicketEntity>tickets;
 
 

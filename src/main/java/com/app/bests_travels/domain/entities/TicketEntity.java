@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -24,13 +25,13 @@ public class TicketEntity implements Serializable {
     private BigDecimal price;
 
     @Column(name = "departure_date")
-    private LocalDate departureDate;
+    private LocalDateTime departureDate;
 
     @Column(name = "arrival_date")
-    private LocalDate arrivalDate;
+    private LocalDateTime arrivalDate;
 
-    @Column(name = "date_purchase")
-    private LocalDate datePurchase;
+    @Column(name = "purchase_date")
+    private LocalDateTime purchaseDate;
 
     ////////////////////MAPEO DE RELACIONES/////////////////////////////
 

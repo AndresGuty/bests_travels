@@ -2,10 +2,7 @@ package com.app.bests_travels.domain.entities;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
 import java.util.Set;
@@ -35,19 +32,26 @@ public class CustomerEntity implements Serializable {
 
     @Column(name = "total_tours")
     private Integer totalTours;
+
     @Column(length = 12, name = "phone_number")
     private String phoneNumber;
 
 ////////////////////MAPEANDO RELACIONES////////////////////
-
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     private Set<TicketEntity> tickets;
 
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
-    private Set<ReservationEntity> reservation;
+    private Set<ReservationEntity> reservations;
 
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     private Set<TourEntity> tours;
+
 
 
 }
